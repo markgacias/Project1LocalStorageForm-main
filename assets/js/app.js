@@ -56,6 +56,9 @@ function removeTweet(e)
         e.target.parentElement.remove();
     }
     
+    //Remove from Storage
+    removeTweetLocalStorage(e.target.parentElement.textContent);
+    
 }
 
 //Add the tweets into the local storage
@@ -113,3 +116,23 @@ function localStorageOnLoad()
     });
 }
 
+//Removes the tweet from local storage
+
+function removeTweetLocalStorage(tweet)
+{
+    //get tweets from storage
+    let tweets = getTweetsFromStorage();
+
+    //remove the x from the tweeet
+
+    const tweetDelete = tweet.substring( 0, tweet.length -1);
+
+    //Loop through the tweets and remove the tweet that's equak
+    tweets.forEach(function(tweetLS)
+    {
+            if(tweetDelete === tweetLS)
+            {
+                console.log('Yes');
+            }
+    });
+}
