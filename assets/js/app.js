@@ -45,6 +45,11 @@ function newTweet(e)
     //add to Local Storage
     addTweetLocalStorage(tweet);
 
+    //Print the alert
+    alert('Tweet Added');
+
+    this.reset();
+
 
 }
 
@@ -122,17 +127,21 @@ function removeTweetLocalStorage(tweet)
 {
     //get tweets from storage
     let tweets = getTweetsFromStorage();
+    
 
     //remove the x from the tweeet
 
     const tweetDelete = tweet.substring( 0, tweet.length -1);
 
-    //Loop through the tweets and remove the tweet that's equak
-    tweets.forEach(function(tweetLS)
+    //Loop through the tweets and remove the tweet that's equal
+    tweets.forEach(function(tweetLS, index)
     {
             if(tweetDelete === tweetLS)
             {
-                console.log('Yes');
+                tweets.splice(index, 1);
             }
     });
+
+    //Save the data
+    localStorage.setItem('tweets', JSON.stringify(tweets));
 }
